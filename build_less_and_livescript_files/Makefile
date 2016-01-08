@@ -8,6 +8,8 @@ LS_FOLDER = static/src/ls
 CSS_FOLDER = static/build/css
 JS_FOLDER = static/build/js
 
+LESS_FILES := ${shell find ${LESS_FOLDER} -type f -name '*.less'}
+LS_FILES := ${shell find ${LS_FOLDER} -type f -name '*.ls'}
 CSS_FILE = ${CSS_FOLDER}/main.min.css
 JS_FILE = ${JS_FOLDER}/main.min.js
 
@@ -23,7 +25,7 @@ build: build-css build-js
 
 build-css: ${CSS_FOLDER} ${CSS_FILE}
 
-${CSS_FILE}: ${LESS_FOLDER}/*.less
+${CSS_FILE}: ${LESS_FILES}
 	cat $^ | lessc - | cleancss > $@
 
 ${CSS_FOLDER}:
@@ -35,7 +37,7 @@ ${CSS_FOLDER}:
 
 build-js: ${JS_FOLDER} ${JS_FILE}
 
-${JS_FILE}: ${LS_FOLDER}/*.ls
+${JS_FILE}: ${LS_FILES}
 	cat $^ | lsc -sc | uglifyjs - > $@
 
 ${JS_FOLDER}:
@@ -60,7 +62,7 @@ install-dependencies:
 ###############
 
 watch:
-	onchange "${LESS_FOLDER}/*.less" "${LS_FOLDER}/*.ls" -- make build
+	onchange "${LESS_FILES}" "${LS_FILES}" -- make build
 
 #########
 # Phony #

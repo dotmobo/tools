@@ -3,15 +3,15 @@
 # Require node.js and npm                       #
 #################################################
 
-LESS_FOLDER = static/src/less
-LS_FOLDER = static/src/ls
-CSS_FOLDER = static/build/css
-JS_FOLDER = static/build/js
+LESS_FOLDER := static/src/less
+LS_FOLDER := static/src/ls
+CSS_FOLDER := static/build/css
+JS_FOLDER := static/build/js
 
 LESS_FILES := ${shell find ${LESS_FOLDER} -type f -name '*.less'}
 LS_FILES := ${shell find ${LS_FOLDER} -type f -name '*.ls'}
-CSS_FILE = ${CSS_FOLDER}/main.min.css
-JS_FILE = ${JS_FOLDER}/main.min.js
+CSS_FILE := ${CSS_FOLDER}/main.min.css
+JS_FILE := ${JS_FOLDER}/main.min.js
 
 ###############
 # Build files #

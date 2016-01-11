@@ -5,8 +5,8 @@
 
 LESS_FOLDER := static/src/less
 LS_FOLDER := static/src/ls
-CSS_FOLDER := static/build/css
-JS_FOLDER := static/build/js
+CSS_FOLDER := static/dist/css
+JS_FOLDER := static/dist/js
 
 LESS_FILES := ${shell find ${LESS_FOLDER} -type f -name '*.less'}
 LS_FILES := ${shell find ${LS_FOLDER} -type f -name '*.ls'}

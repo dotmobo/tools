@@ -1,0 +1,48 @@
+doctype html
+
+html
+
+  head
+    meta(charset='utf-8')
+    title Test
+    link(rel='stylesheet', href='static/components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='static/components/bootstrap/dist/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='static/dist/css/main.min.css')
+
+  body
+    div.container
+        div.row
+            div.col-md-12
+              p.text My boilerplate !
+        div.row
+            div.col-md-12
+              div#app [[ message ]]
+                input(v-model='message')
+        div.row
+            div.col-md-12
+              div#app2
+                ul.list-group
+                  li(v-for='todo in todos').list-group-item [[ todo.text ]]
+        div.row
+            div.col-md-12
+              div#app3
+                p [[ message ]]
+                button(v-on:click='reverseMessage').btn.btn-primary Reverse Message
+        div.row
+            div.col-md-12
+              div#app4
+                input(v-model='newTodo', v-on:keyup.enter='addTodo')
+                ul.list-group
+                  li(v-for='todo in todos').list-group-item
+                    span [[ todo.text ]]&nbsp;&nbsp;
+                    button(v-on:click='removeTodo($index)').btn.btn-primary X
+        div.row
+            div.col-md-12
+              div#app5
+                my-component
+
+    script(type='text/javascript', src='static/components/prelude-ls/browser/prelude-browser-min.js')
+    script(type='text/javascript', src='static/components/jquery/dist/jquery.min.js')
+    script(type='text/javascript', src='static/components/bootstrap/dist/js/bootstrap.min.js')
+    script(type='text/javascript', src='static/components/vue/dist/vue.min.js')
+    script(type='text/javascript', src='static/dist/js/main.min.js')

@@ -1,0 +1,21 @@
+{
+  "name": "plouf",
+  "version": "0.0.0",
+  "authors": [
+    "Morgan <morgan.bohn@unistra.fr>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "prelude-ls": "~1.1.2",
+    "vue": "~1.0.14",
+    "bootstrap": "~3.3.6"
+  }
+}

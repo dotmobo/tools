@@ -32,7 +32,7 @@ build: build-css build-js build-html
 build-html: ${HTML_FOLDER} ${HTML_FILES}
 
 ${HTML_FILES}: ${JADE_FILES}
-	jade < $^ > $@
+	jade $^ --out ${HTML_FOLDER}
 
 ${HTML_FOLDER}:
 	mkdir -p $@

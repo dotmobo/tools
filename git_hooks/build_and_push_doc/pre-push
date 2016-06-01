@@ -1,0 +1,40 @@
+#!/bin/zsh
+#
+# Build the latest sphinx documentation after push on gitlab master
+#
+
+# only for master
+CURRENTBRANCH="${$(git symbolic-ref HEAD)#refs/heads/}"
+
+if [[ $CURRENTBRANCH == "master" ]]
+then
+    # get info
+    LOCALREPO="$(pwd)"
+    REMOTEREPO="$(git config --get remote.origin.url)"
+    LOCALWIKI="$(dirname $LOCALREPO)/$(basename $LOCALREPO).wiki"
+    REPOWIKI="${REMOTEREPO%.git}.wiki.git"
+    URLWIKI=$(echo $REMOTEREPO | sed -e "s/git\@\(.*\)\:\(.*\)\.git/https\:\/\/\1\/\2\/wikis\/latest\/index.html/")
+ 
+    # clone or pull the repo
+    if [ ! -d $LOCALWIKI ]
+    then
+        git clone $REPOWIKI $LOCALWIKI
+    else
+        cd $LOCALWIKI
+        git pull
+    fi
+    
+    # build the doc
+    cd $LOCALREPO/docs
+    make clean
+    make html
+    mkdir -p $LOCALWIKI/latest
+    cp -R _build/html/* $LOCALWIKI/latest
+    echo "<a href='$URLWIKI' target='_blank'>Voir la documentation</a>" > $LOCALWIKI/Home.md
+    
+    # push the doc
+    cd $LOCALWIKI
+    git add -A
+    git commit -m "updated doc"
+    git push
+fi

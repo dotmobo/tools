@@ -1,15 +1,15 @@
 #########################################################
-# Compile and minify stylus, livescript and jade files. #
+# Compile and minify stylus, livescript and pug files. #
 # Require node.js and npm                               #
 #########################################################
 
 # Source
 STYLUS_FOLDER := source/stylus
 LS_FOLDER := source/ls
-JADE_FOLDER := source/jade
+PUG_FOLDER := source/pug
 STYLUS_FILES := ${shell find ${STYLUS_FOLDER} -type f -name '*.styl'}
 LS_FILES := ${shell find ${LS_FOLDER} -type f -name '*.ls'}
-JADE_FILES := ${shell find ${JADE_FOLDER} -type f -name '*.jade'}
+PUG_FILES := ${shell find ${PUG_FOLDER} -type f -name '*.pug'}
 
 # Build
 CSS_FOLDER := _build/static/dist/css
@@ -17,7 +17,7 @@ JS_FOLDER := _build/static/dist/js
 HTML_FOLDER := _build
 CSS_FILE := ${CSS_FOLDER}/main.min.css
 JS_FILE := ${JS_FOLDER}/main.min.js
-HTML_FILES := ${JADE_FILES:source/jade/%.jade=_build/%.html}
+HTML_FILES := ${PUG_FILES:source/pug/%.pug=_build/%.html}
 
 ###############
 # Build files #
@@ -31,8 +31,8 @@ build: build-css build-js build-html
 
 build-html: ${HTML_FOLDER} ${HTML_FILES}
 
-${HTML_FILES}: ${JADE_FILES}
-	jade $^ --out ${HTML_FOLDER}
+${HTML_FILES}: ${PUG_FILES}
+	pug $^ --out ${HTML_FOLDER}
 
 ${HTML_FOLDER}:
 	mkdir -p $@
@@ -73,14 +73,14 @@ clean:
 ########################
 
 install-dependencies:
-	sudo npm install -g stylus clean-css livescript uglifyjs onchange jade
+	sudo npm install -g stylus clean-css livescript uglifyjs onchange pug
 
 ###############
 # Watch files #
 ###############
 
 watch:
-	onchange "${STYLUS_FILES}" "${LS_FILES}" "${JADE_FILES}" -- make build
+	onchange "${STYLUS_FILES}" "${LS_FILES}" "${PUG_FILES}" -- make build
 
 ##############
 # Serve site #

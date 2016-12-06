@@ -1,6 +1,6 @@
 {
-  "name": "plouf",
-  "version": "0.0.0",
+  "name": "myboilerplate",
+  "version": "1.0.0",
   "authors": [
     "Morgan <morgan.bohn@unistra.fr>"
   ],
@@ -13,9 +13,9 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.2.0",
+    "jquery": "~3.1.1",
     "prelude-ls": "~1.1.2",
-    "vue": "~1.0.14",
-    "bootstrap": "~3.3.6"
+    "vue": "~2.1.4",
+    "bootstrap": "~3.3.7"
   }
 }

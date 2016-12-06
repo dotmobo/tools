@@ -3,7 +3,7 @@ My boilerplate
 
 * Precompiler CSS: Stylus
 * Precompiler JS: LiveScript
-* Precompiler HTML: Jade
+* Precompiler HTML: Pug
 * Tasks runner: Make
 * Package managers: bower and npm
 * Libraries: bootstrap, jquery, vue.js

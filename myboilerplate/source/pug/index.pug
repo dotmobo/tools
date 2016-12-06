@@ -16,26 +16,26 @@ html
               p.text My boilerplate !
         div.row
             div.col-md-12
-              div#app [[ message ]]
+              div#app {{ message }}
                 input(v-model='message')
         div.row
             div.col-md-12
               div#app2
                 ul.list-group
-                  li(v-for='todo in todos').list-group-item [[ todo.text ]]
+                  li(v-for='todo in todos').list-group-item {{ todo.text }}
         div.row
             div.col-md-12
               div#app3
-                p [[ message ]]
+                p {{ message }}
                 button(v-on:click='reverseMessage').btn.btn-primary Reverse Message
         div.row
             div.col-md-12
               div#app4
                 input(v-model='newTodo', v-on:keyup.enter='addTodo')
                 ul.list-group
-                  li(v-for='todo in todos').list-group-item
-                    span [[ todo.text ]]&nbsp;&nbsp;
-                    button(v-on:click='removeTodo($index)').btn.btn-primary X
+                  li(v-for='(todo, index) in todos').list-group-item
+                    span {{ todo.text }}&nbsp;&nbsp;
+                    button(v-on:click='removeTodo(index)').btn.btn-primary X
         div.row
             div.col-md-12
               div#app5

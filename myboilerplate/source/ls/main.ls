@@ -2,10 +2,6 @@
 
 $ \.text .hover (-> $ this .css \color \red), (-> $ this .css \color \black)
 
-# Eviter les conflits avec jinja
-Vue.config.delimiters = ['[[', ']]']
-Vue.config.unsafeDelimiters = ['[[[', ']]]']
-
 new Vue {
     el: '#app',
     data: {

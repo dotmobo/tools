@@ -30,7 +30,7 @@ dpkg -i google-chrome-stable_current_amd64.deb
 
 # Sdkman
 curl -s "https://get.sdkman.io" | zsh
-sdk install java groovy kotlin spring gradle maven ant springboot
+sdk install java groovy kotlin gradle maven ant springboot
 
 # Nvm 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | zsh
